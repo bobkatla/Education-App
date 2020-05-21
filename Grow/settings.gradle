@@ -1,0 +1,2 @@
+rootProject.name='Grow'
+include ':app'
