@@ -1,0 +1,8 @@
+Progress of making the app:
+
+22/05/2020: 
+	- Initializing the project on Android Studio
+24/05/2020:
+	- Making the login UI
+	- Creating a testing login on Main to check the username and password stored in SQLite
+	- Making the password encrypted
