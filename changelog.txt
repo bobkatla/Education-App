@@ -6,3 +6,6 @@ Progress of making the app:
 	- Making the login UI
 	- Creating a testing login on Main to check the username and password stored in SQLite
 	- Making the password encrypted
+25/05/2020:
+	- Adding the firebase cloud messaging (FCM)
+
