@@ -1,11 +1,15 @@
 package com.example.grow;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +39,7 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
         }));
 
         Button buttonCancelAlarm = (Button) findViewById((R.id.button_cancel));
-        button.setOnClickListener((new View.OnClickListener() {
+        buttonCancelAlarm.setOnClickListener((new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 cancelAlarm();
@@ -43,6 +47,7 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
         }));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
 //        TextView textView = (TextView) findViewById(R.id.textView);
@@ -58,12 +63,28 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
 
     private void updateTimeText(Calendar c) {
         String timeText = "Alarm set for: ";
-        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c);
+        timeText += DateFormat.getTimeInstance(DateFormat.SHORT).format(c.getTime());
 
         mTextView.setText(timeText);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void startAlarm(Calendar c) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), pendingIntent);
+        }
+    }
+
+    private void cancelAlarm() {
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        Intent intent = new Intent(this, AlertReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
+
+        alarmManager.cancel(pendingIntent);
+        mTextView.setText("Alarm canceled");
     }
 }

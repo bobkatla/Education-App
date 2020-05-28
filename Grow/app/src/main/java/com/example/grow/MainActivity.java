@@ -2,6 +2,7 @@ package com.example.grow;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle readInstanceState) {
         super.onCreate(readInstanceState);
         setContentView(R.layout.activity_main);
+
         final DatabaseHelper helper = new DatabaseHelper(this);
         final ArrayList array_list = helper.getAllContacts();
         name = findViewById(R.id.name);
@@ -29,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         listView = findViewById(R.id.listView);
         arrayAdapter = new ArrayAdapter(MainActivity.this, android.R.layout.simple_list_item_1, array_list);
         listView.setAdapter(arrayAdapter);
+
         findViewById(R.id.Delete).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,5 +85,17 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        findViewById(R.id.Testtest).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openScheduling();
+            }
+        });
+    }
+
+    private void openScheduling(){
+        Intent intent =  new Intent(this, Scheduling.class);
+        startActivity(intent);
     }
 }

@@ -5,16 +5,24 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical">
+
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
-        android:hint="Enter User Name"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Enter User Name" />
+
+    <Button
+        android:id="@+id/Testtest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test" />
+
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
-        android:hint="Enter password"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:hint="Enter password" />
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
@@ -38,6 +46,7 @@
             android:text="DeleteALL"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
     </LinearLayout>
 
     <ListView

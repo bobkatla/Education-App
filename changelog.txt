@@ -13,4 +13,6 @@ Progress of making the app:
 	- Adding registration activity and Scheduling Activity
 28/05/2020:
 	- Adding the time selecting feature to the Scheduling Activity
+29/05/2020:
+	- Adding the push notification feature for the selected time (Alarm)
 
