@@ -74,10 +74,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (!name.getText().toString().isEmpty() && !password.getText().toString().isEmpty()) {
-                    if (helper.insert(name.getText().toString(), password.getText().toString())) {
-                        Toast.makeText(MainActivity.this, "Inserted", Toast.LENGTH_LONG).show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+                    if (helper.checkExist(name.getText().toString())) {
+                        Toast.makeText(MainActivity.this, "Error: the name is existed", Toast.LENGTH_LONG).show();
+                    }
+                    else {
+                        if (helper.insert(name.getText().toString(), password.getText().toString())) {
+                            Toast.makeText(MainActivity.this, "Inserted", Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "NOT Inserted", Toast.LENGTH_LONG).show();
+                        }
                     }
                 } else {
                     if(name.getText().toString().isEmpty()) name.setError("Enter Username");

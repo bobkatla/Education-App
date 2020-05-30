@@ -76,11 +76,11 @@ class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<String> array_list = new ArrayList<String>();
 //        Cursor res = db.rawQuery("select (id ||' : '||name || ' : ' ||password || ' : '|| datetime) as name from " + CONTACTS_TABLE_NAME, null);
-        Cursor res = db.rawQuery("select (id ||' : '||name || ' : ' ||password) as name from " + CONTACTS_TABLE_NAME, null);
+        Cursor res = db.rawQuery("select (id ||' : '||name || ' : ' ||password) as groupCheck from " + CONTACTS_TABLE_NAME, null);
         res.moveToFirst();
         while (res.isAfterLast() == false) {
             if ((res != null) && (res.getCount() > 0))
-                array_list.add(res.getString(res.getColumnIndex("name")));
+                array_list.add(res.getString(res.getColumnIndex("groupCheck")));
             res.moveToNext();
         }
         return array_list;
@@ -97,5 +97,24 @@ class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE from " + CONTACTS_TABLE_NAME);
         return true;
+    }
+
+    public boolean checkExist(String s) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        ArrayList<String> array_list = new ArrayList<String>();
+        Cursor res = db.rawQuery("select (id ||' : '||name || ' : ' ||password) as groupCheck from " + CONTACTS_TABLE_NAME + " where (name)", null);
+        res.moveToFirst();
+        while (res.isAfterLast() == false) {
+            if ((res != null) && (res.getCount() > 0))
+                array_list.add(res.getString(res.getColumnIndex("groupCheck")));
+            res.moveToNext();
+        }
+        if (array_list.isEmpty()) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }
