@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.provider.BaseColumns;
+
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
 class DatabaseHelper extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "usersGrow";
     public static final String CONTACTS_TABLE_NAME = "UserDetails";
+    public static final String COLUMN_NAME = "name";
+    public static final String COLUMN_PASS = "password";
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, 2);
     }
@@ -22,7 +26,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(
-                    "create table " + CONTACTS_TABLE_NAME + "(id INTEGER PRIMARY KEY, name text,password text,datetime default current_timestamp)"
+//                    "create table " + CONTACTS_TABLE_NAME + "(id INTEGER PRIMARY KEY, name text,password text,datetime default current_timestamp)"
             );
         } catch (SQLiteException e) {
             try {
@@ -103,7 +107,20 @@ class DatabaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         ArrayList<String> array_list = new ArrayList<String>();
-        Cursor res = db.rawQuery("select (id ||' : '||name || ' : ' ||password) as groupCheck from " + CONTACTS_TABLE_NAME + " where (name)", null);
+
+        String selection = FeedEntry.COLUMN_NAME_TITLE + " = ?";
+
+//        Cursor res = db.rawQuery("select (id ||' : '||name || ' : ' ||password) as groupCheck from " + CONTACTS_TABLE_NAME + " where (name)", null);
+        Cursor cursor = db.query(
+                CONTACTS_TABLE_NAME,   // The table to query
+                null,             // The array of columns to return (pass null to get all)
+                name,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
         res.moveToFirst();
         while (res.isAfterLast() == false) {
             if ((res != null) && (res.getCount() > 0))
