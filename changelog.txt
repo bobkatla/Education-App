@@ -15,4 +15,9 @@ Progress of making the app:
 	- Adding the time selecting feature to the Scheduling Activity
 29/05/2020:
 	- Adding the push notification feature for the selected time (Alarm)
-
+30/05/2020:
+	- Updating the login with user check
+31/05/2020:
+	- Make the database more robust and interactive 
+01/06/2020:
+	- Finish the Login and Registraion structure that can check for the authentication

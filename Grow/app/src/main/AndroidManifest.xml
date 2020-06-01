@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Scheduling"></activity>
+        <activity android:name=".Todo"></activity>
+        <activity android:name=".Test" />
+        <activity android:name=".Scheduling" />
         <activity android:name=".Login" />
         <activity android:name=".Regis" />
         <activity android:name=".MainActivity">
@@ -20,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".AlertReceiver"></receiver>
+        <receiver android:name=".AlertReceiver" />
     </application>
 
 </manifest>
