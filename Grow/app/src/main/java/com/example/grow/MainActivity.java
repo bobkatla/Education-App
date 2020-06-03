@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button b1 = findViewById(R.id.teacher);
         Button b2 = findViewById(R.id.student);
-        Button b3 = findViewById(R.id.testlah);
+//        Button b3 = findViewById(R.id.testlah);
 
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,12 +34,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        b3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTest();
-            }
-        });
+//        b3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                openTest();
+//            }
+//        });
     }
 
     private void openTeacher(){
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void openTest(){
-        Intent intent =  new Intent(this, Test.class);
-        startActivity(intent);
-    }
+//    private void openTest(){
+//        Intent intent =  new Intent(this, Test.class);
+//        startActivity(intent);
+//    }
 }

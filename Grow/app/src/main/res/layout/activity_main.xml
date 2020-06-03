@@ -1,33 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
-
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/who"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Who are you?" />
-
+        android:layout_above="@id/teacher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:text="Who are you ???"
+        android:textSize="30sp" />
     <Button
         android:id="@+id/teacher"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teacher" />
-
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="teacher" />
     <Button
         android:id="@+id/student"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Student" />
+        android:layout_below="@id/teacher"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="student" />
 
-    <Button
-        android:id="@+id/testlah"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Testt" />
-</LinearLayout>
+<!--    <Button-->
+<!--        android:id="@+id/testlah"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Testt" />-->
+</RelativeLayout>

@@ -48,4 +48,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Sign up" />
+    <TextView
+        android:id="@+id/toLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:clickable="true"
+        android:gravity="center_horizontal"
+        android:text="Back to login"
+        android:textAlignment="center" />
 </LinearLayout>

@@ -22,7 +22,7 @@ public class Test extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle readInstanceState) {
         super.onCreate(readInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
 
         final DatabaseHelper helper = new DatabaseHelper(this);
         final ArrayList array_list = helper.getAllContacts();

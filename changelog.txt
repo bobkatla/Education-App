@@ -1,25 +1,29 @@
 
 Progress of making the app:
 
-22/05/2020: 
+1. 22/05/2020: 
 	- Initializing the project on Android Studio
-24/05/2020:
+2. 24/05/2020:
 	- Making the login UI
 	- Creating a testing login on Main to check the username and password stored in SQLite
 	- Making the password encrypted
-25/05/2020:
+3. 25/05/2020:
 	- Adding the firebase cloud messaging (FCM)
-27/05/2020:
+4. 27/05/2020:
 	- Adding registration activity and Scheduling Activity
-28/05/2020:
+5. 28/05/2020:
 	- Adding the time selecting feature to the Scheduling Activity
-29/05/2020:
+6. 29/05/2020:
 	- Adding the push notification feature for the selected time (Alarm)
-30/05/2020:
+7. 30/05/2020:
 	- Updating the login with user check
-31/05/2020:
+8. 31/05/2020:
 	- Make the database more robust and interactive 
-01/06/2020:
+9. 01/06/2020:
 	- Finish the Login and Registraion structure that can check for the authentication
-02/06/2020:
+10. 02/06/2020:
 	- Finish the teacher module
+11. 03/06/2020:
+	- Finish everything
+	- Create new SQL database for todo Task
+	- Show the tasks on student mode

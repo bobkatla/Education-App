@@ -115,7 +115,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
         String[] selectionArgs = { s };
         String[] projection = {
-                FeedUserGrow.FeedEntry._ID,
+                FeedUserGrow.FeedEntry._ID
         };
 
         Cursor cursor = db.query(
@@ -147,7 +147,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
 
         String[] selectionArgs = {user};
         String[] projection = {
-                FeedUserGrow.FeedEntry.COLUMN_PASS,
+                FeedUserGrow.FeedEntry.COLUMN_PASS
         };
 
         Cursor cursor = db.query(
@@ -159,8 +159,6 @@ class DatabaseHelper extends SQLiteOpenHelper {
                 null,                   // don't filter by row groups
                 null               // The sort order
         );
-//        String passwordC = cursor.getString(cursor.getColumnIndex(FeedUserGrow.FeedEntry.COLUMN_PASS));
-//        cursor.close();
 
         List itemIds = new ArrayList<>();
         while(cursor.moveToNext()) {
