@@ -93,6 +93,14 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
                 }
             }
         });
+
+        TextView home = (TextView) findViewById(R.id.toHome);
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openHome();
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -143,5 +151,10 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
 
         TextView tv = (TextView) findViewById(R.id.dateView);
         tv.setText(currentDateString);
+    }
+
+    private void openHome(){
+        Intent intent =  new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/colorAccent">
 
     <TextView
         android:id="@+id/who"
@@ -11,9 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/teacher"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="30dp"
-        android:text="Who are you ???"
-        android:textSize="30sp" />
+        android:layout_marginBottom="20dp"
+        android:textColor="@color/colorBlack"
+        android:fontFamily="cursive"
+        android:text="Who are you?"
+        android:textSize="36sp" />
     <Button
         android:id="@+id/teacher"
         android:layout_width="wrap_content"
@@ -28,7 +31,8 @@
         android:layout_below="@id/teacher"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="27dp"
-        android:text="student" />
+        android:text="student"
+        android:background="@drawable/button_btn"/>
 
 <!--    <Button-->
 <!--        android:id="@+id/testlah"-->

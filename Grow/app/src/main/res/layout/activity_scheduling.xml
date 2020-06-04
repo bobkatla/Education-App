@@ -6,15 +6,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Scheduling">
+    tools:context=".Scheduling"
+    android:background="@color/colorLight">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginBottom="25dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="cursive"
+        android:gravity="center_horizontal"
+        android:paddingVertical="15dp"
         android:text="Time to select your activity"
-        android:layout_gravity="center"
-        android:textSize="30sp"
-    />
+        android:textAlignment="center"
+        android:textColor="@color/colorBlack"
+        android:textSize="30sp" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
@@ -64,11 +70,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your activity"
+        android:textColor="@color/colorBlack"
         android:textSize="20sp" />
     <Button
         android:id="@+id/insertButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Input your activity" />
+        android:text="Input your activity"
+        android:background="@drawable/button_btn"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginVertical="20dp"/>
+    <TextView
+        android:id="@+id/toHome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to homepage"
+        android:textSize="22sp"
+        android:clickable="true"
+        android:gravity="center_horizontal"/>
 
 </LinearLayout>
