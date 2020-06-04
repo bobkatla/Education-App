@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Todo"></activity>
-        <activity android:name=".Test" />
         <activity android:name=".Scheduling" />
         <activity android:name=".Login" />
         <activity android:name=".Regis" />

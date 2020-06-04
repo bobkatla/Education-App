@@ -22,11 +22,12 @@ public class Login extends AppCompatActivity {
         final EditText mPassword = findViewById(R.id.pass);
 
         Button loginB = findViewById(R.id.login);
-
         loginB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check if the user input into the fields if not show error
                 if (!mName.getText().toString().isEmpty() && !mPassword.getText().toString().isEmpty()) {
+                    //if the database confirms the authentication, open the scheduling
                     if (dbHelper.login(mName.getText().toString(), mPassword.getText().toString())) {
                         openScheduling();
                     } else {
@@ -39,6 +40,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
+        //open the registration
         findViewById(R.id.toRegis).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

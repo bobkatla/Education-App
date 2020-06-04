@@ -27,3 +27,9 @@ Progress of making the app:
 	- Finish everything
 	- Create new SQL database for todo Task
 	- Show the tasks on student mode
+12. 04/06/2020:
+	- Finalize the UI
+	- Testing on real devices
+13. 05/06/2020:
+	- Finish the documentation
+	- Delete unneeded code

@@ -7,7 +7,7 @@ public final class FeedUserGrow {
     // make the constructor private.
     private FeedUserGrow() {}
 
-    /* Inner class that defines the table contents */
+    // Inner class that defines the table contents
     public static class FeedEntry implements BaseColumns {
         public static final String _ID = "id";
         public static final String TABLE_NAME = "UserDetails";

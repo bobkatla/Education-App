@@ -1,1 +1,4 @@
-There are no external resources used in this project
+There is only 1 external image used in this project which can be found here:
+https://unsplash.com/photos/q10VITrVYUM
+
+This is a free stock image opened for commercial use.

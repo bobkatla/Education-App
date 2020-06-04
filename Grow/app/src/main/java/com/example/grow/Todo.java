@@ -34,9 +34,12 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
 
         final DatabaseHelper2 helper = new DatabaseHelper2(this);
         final TextView theDate = (TextView) findViewById(R.id.dateViewTodo);
+
+        //Setting up the string for check in the if later
         final String check = "No date picked";
         theDate.setText(check);
 
+        //Open the DateFragment for date picking
         Button buttonDate = (Button) findViewById(R.id.button_dateTodo);
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,7 +53,9 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
         showButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check if the user input a date yet
                 if (theDate.getText().toString() != check) {
+                    //Accessing the database to create the RecycleView
                     final ArrayList<Data> data = helper.getAllTasks(theDate.getText().toString());
                     mRecyclerView = findViewById(R.id.recViewSchedule);
                     mLayoutManger = new LinearLayoutManager(Todo.this);
@@ -58,6 +63,7 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
                     mRecyclerView.setLayoutManager(mLayoutManger);
                     mRecyclerView.setAdapter(mAdapter);
 
+                    //Making the swiping to create an item from the list
                     ItemTouchHelper.SimpleCallback iTCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
                         @Override
                         public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
@@ -78,6 +84,7 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
         });
     }
 
+    //The required method that call when the date is picked
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         Calendar c = Calendar.getInstance();
@@ -85,8 +92,10 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
+        //convert to String
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
 
+        //Setting the text based on the date picked
         TextView tv = (TextView) findViewById(R.id.dateViewTodo);
         tv.setText(currentDateString);
     }

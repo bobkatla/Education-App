@@ -16,16 +16,21 @@ public class NotificationHelper extends ContextWrapper {
 
     private NotificationManager mManager;
 
+    //Constructor that get the context
     public NotificationHelper(Context base) {
         super(base);
+        //The notification on support API higher than Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
             createChannels();
         }
     }
 
+    //Create the channel of notification
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void createChannels() {
+        //Create with the name and id of the channel
         NotificationChannel channel1 =  new NotificationChannel(channel1ID, channel1name, NotificationManager.IMPORTANCE_DEFAULT);
+        //Setting up some features of the notification in this channel
         channel1.enableLights(true);
         channel1.enableVibration(true);
         channel1.setLightColor(R.color.colorPrimary);
@@ -34,16 +39,18 @@ public class NotificationHelper extends ContextWrapper {
         getManager().createNotificationChannel(channel1);
     }
 
+    //get the notification manager from the service of the device
     public NotificationManager getManager() {
         if(mManager == null) {
             mManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         }
-
         return mManager;
     }
 
+    //Build the notification
     public NotificationCompat.Builder getChannel1Notification(String title, String message) {
         return new NotificationCompat.Builder(getApplicationContext(), channel1ID)
+                //Setting some features inside the notification
                 .setContentTitle(title)
                 .setContentText(message)
                 .setSmallIcon(R.drawable.ic_1);

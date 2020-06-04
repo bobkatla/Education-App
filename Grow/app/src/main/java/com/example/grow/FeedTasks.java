@@ -7,7 +7,7 @@ public class FeedTasks {
     // make the constructor private.
     private FeedTasks() {}
 
-    /* Inner class that defines the table contents */
+    // Inner class that defines the table contents
     public static class FeedEntry implements BaseColumns {
         public static final String _ID = "id";
         public static final String TABLE_NAME = "Schedule";

@@ -11,10 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+//Class to manipulate and accessing the RecycleView
 public class LsAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //This the view of each item based on list_items.xml
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_items, parent, false);
         return new ListViewHolder(view);
     }
@@ -24,11 +26,13 @@ public class LsAdapter extends RecyclerView.Adapter {
         ((ListViewHolder) holder).bindView(position);
     }
 
+    //The number of items in the list
     @Override
     public int getItemCount() {
         return tasks.size();
     }
 
+    //Constructing the Adapter with ArrayList of Data type
     private ArrayList<Data> tasks;
     public LsAdapter(ArrayList<Data> tasksNN) {
         tasks = tasksNN;
@@ -46,6 +50,7 @@ public class LsAdapter extends RecyclerView.Adapter {
             mImageItems = (ImageView) itemView.findViewById(R.id.image1);
         }
 
+        //Get the position of current items going to be created in the recycle view
         public void bindView(int position){
             Data current = tasks.get(position);
             mTextTime.setText(current.getTime());

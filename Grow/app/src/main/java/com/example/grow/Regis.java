@@ -23,10 +23,13 @@ public class Regis extends AppCompatActivity {
         findViewById(R.id.Registration).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Check if the user input into the fields if not show error
                 if (!name.getText().toString().isEmpty() && !pass.getText().toString().isEmpty()) {
+                    //Check if the username already existed in the database
                     if (helper.checkExist(name.getText().toString())) {
                         Toast.makeText(Regis.this, "Error: the name is already existed", Toast.LENGTH_LONG).show();
                     } else {
+                        //input the user info into the database if it is unique
                         if (helper.insert(name.getText().toString(), pass.getText().toString())) {
                             Toast.makeText(Regis.this, "Sign up successfully", Toast.LENGTH_LONG).show();
                         } else {
@@ -37,12 +40,15 @@ public class Regis extends AppCompatActivity {
                     if(name.getText().toString().isEmpty()) name.setError("Enter Username");
                     if(pass.getText().toString().isEmpty()) pass.setError("Enter Password");
                 }
+                //Refresh the page after the registration is done
                 Intent intent = getIntent();
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 finish();
                 startActivity(intent);
             }
         });
+
+        //Back to login page
         findViewById(R.id.toLogin).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

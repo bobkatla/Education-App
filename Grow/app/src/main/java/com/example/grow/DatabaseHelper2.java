@@ -11,12 +11,13 @@ import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
 
+//The database class to store activities
 public class DatabaseHelper2 extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "TodoTasks";
     public static final int DATABASE_VERSION = 2;
 
+    //created the table to store data with id, date, time and task
     private static final String SQL_CREATE_ENTRIES_TASKS =
             "CREATE TABLE " + FeedTasks.FeedEntry.TABLE_NAME + " (" +
                     FeedTasks.FeedEntry._ID + " INTEGER PRIMARY KEY," +
@@ -24,13 +25,16 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
                     FeedTasks.FeedEntry.COLUMN_TIME + " TEXT," +
                     FeedTasks.FeedEntry.COLUMN_TASK + " TEXT)";
 
+    //Drop table if update
     private static final String SQL_DELETE_ENTRIES_TASKS =
             "DROP TABLE IF EXISTS " + FeedTasks.FeedEntry.TABLE_NAME;
 
+    //Constructor to set up database with the given context
     public DatabaseHelper2(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    //Create the database
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
@@ -44,12 +48,14 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
         }
     }
 
+    //If the database got upgrade will drop
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ENTRIES_TASKS);
         onCreate(db);
     }
 
+    //Get all the task and put in arrayList of Data type for the RecycleView later
     public ArrayList<Data> getAllTasks(String chosenDate) {
         SQLiteDatabase db = this.getReadableDatabase();
         ArrayList<Data> array_list = new ArrayList<Data>();
@@ -76,6 +82,7 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
         res.moveToFirst();
         while (res.isAfterLast() == false) {
             if ((res != null) && (res.getCount() > 0))
+                //Refer to the class Data
                 array_list.add(new Data (
                         R.drawable.ic_1,
                         res.getString(res.getColumnIndex("time")),
@@ -85,6 +92,7 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
         return array_list;
     }
 
+    //Add new task into the database with all the given input
     public boolean addTask(String date, String time, String task) {
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -96,6 +104,7 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
         return true;
     }
 
+    //Delete a task
     public void deleteTask(String time) {
         SQLiteDatabase db = this.getReadableDatabase();
         // Define 'where' part of query.
@@ -104,9 +113,5 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
         String[] selectionArgs = { time};
         // Issue SQL statement.
         int deletedRows = db.delete(FeedTasks.FeedEntry.TABLE_NAME, selection, selectionArgs);
-    }
-
-    public void updateTask() {
-
     }
 }
