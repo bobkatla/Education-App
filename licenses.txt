@@ -2,3 +2,5 @@ There is only 1 external image used in this project which can be found here:
 https://unsplash.com/photos/q10VITrVYUM
 
 This is a free stock image opened for commercial use.
+
+There is another image of number 1 works as a logo is from Android Studio
