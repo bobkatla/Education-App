@@ -18,6 +18,7 @@ public class Login extends AppCompatActivity {
 
         final DatabaseHelper dbHelper = new DatabaseHelper(this);
 
+        //connect to the xml with specific views
         final EditText mName = findViewById(R.id.user);
         final EditText mPassword = findViewById(R.id.pass);
 

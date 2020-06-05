@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(readInstanceState);
         setContentView(R.layout.activity_main);
 
+        //connect to the xml with specific views
         Button b1 = findViewById(R.id.teacher);
         Button b2 = findViewById(R.id.student);
 

@@ -61,6 +61,7 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
         ArrayList<Data> array_list = new ArrayList<Data>();
 
         String[] projection = {
+                FeedTasks.FeedEntry._ID,
                 FeedTasks.FeedEntry.COLUMN_TIME,
                 FeedTasks.FeedEntry.COLUMN_TASK
         };
@@ -84,6 +85,7 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
             if ((res != null) && (res.getCount() > 0))
                 //Refer to the class Data
                 array_list.add(new Data (
+                        res.getString(res.getColumnIndex("id")),
                         R.drawable.ic_1,
                         res.getString(res.getColumnIndex("time")),
                         res.getString(res.getColumnIndex("task"))));
@@ -105,12 +107,12 @@ public class DatabaseHelper2 extends SQLiteOpenHelper {
     }
 
     //Delete a task
-    public void deleteTask(String time) {
+    public void deleteTask(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         // Define 'where' part of query.
-        String selection = FeedTasks.FeedEntry.COLUMN_TIME + " LIKE ?";
+        String selection = FeedTasks.FeedEntry._ID + " LIKE ?";
         // Specify arguments in placeholder order.
-        String[] selectionArgs = { time};
+        String[] selectionArgs = {id};
         // Issue SQL statement.
         int deletedRows = db.delete(FeedTasks.FeedEntry.TABLE_NAME, selection, selectionArgs);
     }

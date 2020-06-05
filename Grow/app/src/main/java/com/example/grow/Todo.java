@@ -33,6 +33,8 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
         setContentView(R.layout.activity_todo);
 
         final DatabaseHelper2 helper = new DatabaseHelper2(this);
+
+        //connect to the xml with specific views
         final TextView theDate = (TextView) findViewById(R.id.dateViewTodo);
 
         //Setting up the string for check in the if later
@@ -72,6 +74,8 @@ public class Todo extends AppCompatActivity implements DatePickerDialog.OnDateSe
 
                         @Override
                         public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+                            String id = data.get(viewHolder.getAdapterPosition()).getId();
+                            helper.deleteTask(id);
                             data.remove(viewHolder.getAdapterPosition());
                             mAdapter.notifyDataSetChanged();
                         }

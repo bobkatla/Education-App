@@ -30,6 +30,7 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
     private TextView mTimeView;
     private TextView mDateView;
     private EditText mTask;
+    private Calendar c = Calendar.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
 
         final DatabaseHelper2 helper = new DatabaseHelper2(this);
 
+        //connect to the xml with specific views
         mTimeView = findViewById(R.id.timeView);
         mDateView = findViewById(R.id.dateView);
         mTask = findViewById(R.id.inputActivity);
@@ -73,6 +75,7 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
         //Input the activity
         Button buttonInput = (Button) findViewById(R.id.insertButton);
         buttonInput.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
             @Override
             public void onClick(View v) {
                 //the if to check if the user input the date or not, if not show error
@@ -80,6 +83,8 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
                     //input the activity into database
                     if (helper.addTask(mDateView.getText().toString(), mTimeView.getText().toString(), mTask.getText().toString())) {
                         Toast.makeText(Scheduling.this, "Put the activity successfully", Toast.LENGTH_LONG).show();
+                        //start the alarm
+                        startAlarm(c);
                         //auto refresh the page/activity for so the user can easily put another input
                         Intent intent = getIntent();
                         intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -109,13 +114,11 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         //create a time var to put in the updateTimeText and starAlarm methods
-        Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hourOfDay);
         c.set(Calendar.MINUTE, minute);
         c.set(Calendar.SECOND, 0);
 
         updateTimeText(c);
-        startAlarm(c);
     }
 
     //Method to update the text show the picked time
@@ -139,7 +142,6 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
     //The required method that call when the date is picked, noted that this method only applied for API above Kitkat
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-        Calendar c = Calendar.getInstance();
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);

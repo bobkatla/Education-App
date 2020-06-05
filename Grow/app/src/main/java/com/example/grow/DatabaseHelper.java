@@ -57,7 +57,7 @@ class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     //Method to encrypt the password, make sure the stored passwords are encrypted for security reason
-    public static final String md5(final String s) {
+    private static final String md5(final String s) {
         final String MD5 = "MD5";
         try {
             // Create MD5 Hash

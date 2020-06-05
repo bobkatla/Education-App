@@ -16,6 +16,7 @@ public class Regis extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_regis);
 
+        //connect to the xml with specific views
         final DatabaseHelper helper = new DatabaseHelper(this);
         final EditText name = findViewById(R.id.RegUser);
         final EditText pass = findViewById(R.id.RegPass);
