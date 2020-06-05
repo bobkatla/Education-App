@@ -50,7 +50,7 @@ public class LsAdapter extends RecyclerView.Adapter {
             mImageItems = (ImageView) itemView.findViewById(R.id.image1);
         }
 
-        //Get the position of current items going to be created in the recycle view
+        //Get the position of items going to be created in the recycle view
         public void bindView(int position){
             Data current = tasks.get(position);
             mTextTime.setText(current.getTime());

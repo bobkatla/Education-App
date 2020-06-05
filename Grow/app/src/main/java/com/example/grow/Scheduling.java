@@ -131,6 +131,7 @@ public class Scheduling extends AppCompatActivity implements TimePickerDialog.On
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     private void startAlarm(Calendar c) {
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+        //connect to Built notification when it is time (pending intent)
         Intent intent = new Intent(this, AlertReceiver.class); //refer to the AlertReceiver class
         PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 1, intent, 0);
 
